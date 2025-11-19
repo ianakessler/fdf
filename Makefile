@@ -6,7 +6,7 @@
 #    By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/11 16:23:19 by iaratang          #+#    #+#              #
-#    Updated: 2025/11/17 16:33:51 by iaratang         ###   ########.fr        #
+#    Updated: 2025/11/19 17:38:53 by iaratang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@ CFLAGS = -Wall -Werror -Wextra
 RM = rm -f
 
 SRCS =	srcs/main.c\
+		srcs/map_parser.c\
+		srcs/file_validator.c\
 
 
 OBJS = $(SRCS:.c=.o)

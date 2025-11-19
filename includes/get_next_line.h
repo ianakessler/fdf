@@ -6,7 +6,7 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 15:56:03 by iaratang          #+#    #+#             */
-/*   Updated: 2025/09/03 17:47:27 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/11/17 20:00:39 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,13 @@
 #  define BUFFER_SIZE 42
 # endif
 
+# include "../lib/libft.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 
 char	*get_next_line(int fd);
-void	*ft_calloc(size_t count, size_t size);
-size_t	ft_strlen(const char *c);
-char	*ft_strjoin(const char *s1, const char *s2);
-char	*ft_strchr(const char *str, int c);
-char	*ft_strdup(const char *s1);
+
 
 #endif

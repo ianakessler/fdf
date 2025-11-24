@@ -6,7 +6,7 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 16:08:57 by iaratang          #+#    #+#             */
-/*   Updated: 2025/11/19 16:40:02 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/11/24 18:39:42 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,19 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 int	main(int argc, char **argv)
 {
+	t_map *mapa;
+
+	mapa = malloc(sizeof(t_map));
 	if (argc != 2)
 		return 0;
-	int fd = open(argv[1], O_RDONLY);
-	parse_map(argc, fd, argv[1]);
-	int i = chars_line_counter(fd);
+
+	parse_map(argc, argv[1]);
+	int k = count_map_rows(argv[1], &mapa);
+	int i = chars_line_counter(argv[1]);
+	init_map(&mapa, k, argv[1]);
+
 	return (i);
+
 }
 
 	// void	*mlx;

@@ -6,7 +6,7 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 17:34:49 by iaratang          #+#    #+#             */
-/*   Updated: 2025/11/19 17:40:00 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/11/24 17:44:12 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,12 @@ static void	validate_fd(int argc, int fd)
 	}
 }
 
-void	parse_map(int argc, int fd, char	*file)
+void	parse_map(int argc, char	*file)
 {
+	int	fd;
+
+	fd = open(file, O_RDONLY);
 	validate_fd(argc, fd);
 	file_name_validator(file);
+	close(fd);
 }

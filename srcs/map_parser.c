@@ -6,7 +6,7 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 19:06:59 by iaratang          #+#    #+#             */
-/*   Updated: 2025/11/24 18:35:59 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/11/24 19:12:13 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,25 +37,32 @@ int	count_numbers_in_line(char *line)
 	return (nums);
 }
 //le cada linha e retorna a mais longa (numero de colunas da matriz)
-int	chars_line_counter(char	*file_name)
+int	chars_line_counter(char	*file_name, t_map **map)
 {
 	char	*line;
-	int		len;
 	int		chars_in_line;
 	int		fd;
+	int		max_chars;
 
 	fd = open(file_name, O_RDONLY);
 	chars_in_line = 0;
-	len = 0;
+	max_chars = 0;
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break;
 		chars_in_line = count_numbers_in_line(line);
+		if (max_chars == 0)
+			max_chars = chars_in_line;
+		if (chars_in_line != max_chars)
+		{
+			ft_putstr_fd("Map must be a retangle", 1);
+			exit(0);
+		}
 		free(line);
-		len++;
 	}
+	(*map)->width = max_chars;
 	close(fd);
 	return (chars_in_line);
 }
@@ -92,7 +99,7 @@ void	init_map(t_map **map,int lines, char *map_name)
 
 	i = 0;
 	fd = open(map_name, O_RDONLY);
-	printf("%i\n", fd);
+	printf("fd>>> %i\n", fd);
 	while (i < lines)
 	{
 		raw = get_next_line(fd);
@@ -113,16 +120,13 @@ void	fill_map_array(char **splited, int	line, t_map **map)
 {
 	int		current_value;
 	int		i;
-	t_map	*mapa;
 
-	printf("ncjdbjds\n");
-	mapa = *map;
 	i = 0;
-	while (splited[i])
+	while (i < (*map)->width)
 	{
 		current_value = ft_atoi(splited[i]);
 		printf("%i\n", current_value);
-		mapa->map[line][i] = current_value;
+		(*map)->map[line][i] = current_value;
 		i++;
 	}
 }

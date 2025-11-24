@@ -6,7 +6,7 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:17:15 by iaratang          #+#    #+#             */
-/*   Updated: 2025/11/24 17:46:51 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/11/24 18:57:41 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	parse_map(int argc, char	*file);
 
 
 //tests
-int	chars_line_counter(char *file_name);
+int	chars_line_counter(char *file_name, t_map **map);
 int	count_numbers_in_line(char *line);
 int	count_map_rows(char *file_name, t_map **map);
 void	init_map(t_map **map,int lines, char *map_name);

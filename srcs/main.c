@@ -6,7 +6,7 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 16:08:57 by iaratang          #+#    #+#             */
-/*   Updated: 2025/11/24 18:39:42 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/11/24 18:57:59 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int	main(int argc, char **argv)
 
 	parse_map(argc, argv[1]);
 	int k = count_map_rows(argv[1], &mapa);
-	int i = chars_line_counter(argv[1]);
+	int i = chars_line_counter(argv[1], &mapa);
 	init_map(&mapa, k, argv[1]);
-
+	free(mapa);
 	return (i);
 
 }

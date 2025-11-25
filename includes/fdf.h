@@ -6,7 +6,7 @@
 /*   By: iaratang@student.42sp.org.br <iaratang>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:17:15 by iaratang          #+#    #+#             */
-/*   Updated: 2025/11/25 19:59:06 by iaratang@st      ###   ########.fr       */
+/*   Updated: 2025/11/25 20:26:24 by iaratang@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,8 @@ void    malloc_map(t_map **map, char *file_name);
 //frees
 void free_map(t_map **map);
 void free_splited(char **splited, int size);
+
+//utils
+int count_rows(char *line);
 
 #endif

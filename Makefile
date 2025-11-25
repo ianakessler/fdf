@@ -6,7 +6,7 @@
 #    By: iaratang@student.42sp.org.br <iaratang>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/11 16:23:19 by iaratang          #+#    #+#              #
-#    Updated: 2025/11/25 19:54:33 by iaratang@st      ###   ########.fr        #
+#    Updated: 2025/11/25 20:26:39 by iaratang@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS =	srcs/main.c\
 		srcs/mapping.c\
 		srcs/file_validator.c\
 		srcs/free_allocs.c\
+		srcs/utils.c\
 
 
 OBJS = $(SRCS:.c=.o)

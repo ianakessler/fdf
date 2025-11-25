@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: iaratang@student.42sp.org.br <iaratang>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/11 16:23:19 by iaratang          #+#    #+#              #
-#    Updated: 2025/11/19 17:38:53 by iaratang         ###   ########.fr        #
+#    Updated: 2025/11/25 19:54:33 by iaratang@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,9 @@ CFLAGS = -Wall -Werror -Wextra
 RM = rm -f
 
 SRCS =	srcs/main.c\
-		srcs/map_parser.c\
+		srcs/mapping.c\
 		srcs/file_validator.c\
+		srcs/free_allocs.c\
 
 
 OBJS = $(SRCS:.c=.o)

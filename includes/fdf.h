@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: iaratang@student.42sp.org.br <iaratang>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:17:15 by iaratang          #+#    #+#             */
-/*   Updated: 2025/11/24 18:57:41 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/11/25 19:59:06 by iaratang@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,13 @@ typedef struct s_map
 }				t_map;
 
 //arguments validation
-void	parse_map(int argc, char	*file);
+void	file_validator(char *file_name);
 
+//testes 
+void    malloc_map(t_map **map, char *file_name);
 
-//tests
-int	chars_line_counter(char *file_name, t_map **map);
-int	count_numbers_in_line(char *line);
-int	count_map_rows(char *file_name, t_map **map);
-void	init_map(t_map **map,int lines, char *map_name);
-void	fill_map_array(char **splited, int	line, t_map **map);
-void	free_splited(char **splited);
+//frees
+void free_map(t_map **map);
+void free_splited(char **splited, int size);
 
 #endif

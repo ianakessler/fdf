@@ -3,52 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   file_validator.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: iaratang@student.42sp.org.br <iaratang>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 17:34:49 by iaratang          #+#    #+#             */
-/*   Updated: 2025/11/24 17:44:12 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/11/25 18:43:47 by iaratang@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-static void	validate_fd(int argc, int fd);
-static void	file_name_validator(char *file_name);
-
-static void	file_name_validator(char *file_name)
+static void    validate_file_name(char *file_name)
 {
-	char	*file_extension;
-	int		is_fdf;
+    char    *file_extension;
 
-	file_extension = ft_strrchr(file_name, '.');
-	is_fdf = ft_strncmp(".fdf", file_extension, 4);
-	if (is_fdf != 0)
-	{
-		ft_putstr_fd("Please select a valid .fdf file.\n", 1);
-		exit(1);
-	}
+    file_extension = ft_strrchr(file_name, '.');
+    if (!file_extension || (ft_strncmp(file_extension, ".fdf", 4) != 0))
+    {
+        ft_putstr_fd("File extension must be .fdf\n", 1);
+        exit(1);
+    }
 }
 
-static void	validate_fd(int argc, int fd)
+static void    validate_file_descriptor(char *file_name)
 {
-	if (argc != 2)
-	{
-		ft_putstr_fd("Wrong number of arguments.\n", 1);
-		exit(1);
-	}
-	if (fd < 0)
-	{
-		ft_putstr_fd("Please select a valid map file.\n", 1);
-		exit(1);
-	}
+    int fd;
+
+    fd = open(file_name, O_RDONLY);
+    if (fd < 0)
+    {
+        ft_putstr_fd("Error opening file descriptor, exiting...\n", 1);
+        exit(1);
+    }
+    close(fd);
 }
 
-void	parse_map(int argc, char	*file)
+void	file_validator(char *file_name)
 {
-	int	fd;
-
-	fd = open(file, O_RDONLY);
-	validate_fd(argc, fd);
-	file_name_validator(file);
-	close(fd);
+	validate_file_name(file_name);
+	validate_file_descriptor(file_name);
 }

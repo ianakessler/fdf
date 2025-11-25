@@ -6,7 +6,7 @@
 /*   By: iaratang@student.42sp.org.br <iaratang>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 16:08:57 by iaratang          #+#    #+#             */
-/*   Updated: 2025/11/25 21:30:10 by iaratang@st      ###   ########.fr       */
+/*   Updated: 2025/11/25 22:03:12 by iaratang@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(int argc, char **argv)
 		j = 0;
 		while (j < map->width)
 		{
-			printf("%i\t", map->map[i][j]);
+			printf("%i ", map->map[i][j]);
 			j++;
 		}
 		printf("\n");

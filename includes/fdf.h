@@ -6,7 +6,7 @@
 /*   By: iaratang@student.42sp.org.br <iaratang>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:17:15 by iaratang          #+#    #+#             */
-/*   Updated: 2025/11/25 20:26:24 by iaratang@st      ###   ########.fr       */
+/*   Updated: 2025/11/25 21:25:28 by iaratang@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,11 @@ void	file_validator(char *file_name);
 
 //testes 
 void    malloc_map(t_map **map, char *file_name);
+void    populate_matrix(t_map **map, char *file_name);
 
 //frees
 void free_map(t_map **map);
-void free_splited(char **splited, int size);
+void free_splited(char **splited);
 
 //utils
 int count_rows(char *line);

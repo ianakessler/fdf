@@ -6,7 +6,7 @@
 /*   By: iaratang@student.42sp.org.br <iaratang>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 19:33:47 by iaratang@st       #+#    #+#             */
-/*   Updated: 2025/11/25 19:59:12 by iaratang@st      ###   ########.fr       */
+/*   Updated: 2025/11/25 21:22:18 by iaratang@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,13 @@ void free_map(t_map **map)
     *map = NULL;
 }
 
-void free_splited(char **splited, int size)
+void free_splited(char **splited)
 {
     int i;
 
     i = 0;
-    while (i < size)
-    {
-        free(splited[i]);
-        i++;
-    }
+    while (splited[i])
+        free(splited[i++]);
     free(splited);
     splited = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: iaratang@student.42sp.org.br <iaratang>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 15:35:37 by iaratang@st       #+#    #+#             */
-/*   Updated: 2025/11/25 20:09:11 by iaratang@st      ###   ########.fr       */
+/*   Updated: 2025/11/25 21:23:02 by iaratang@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void    set_map_width(t_map **map, char *file_name)
             break;
         while (splited_line[total_rows])
             total_rows++;
-        free_splited(splited_line, total_rows);
+        free_splited(splited_line);
     }
     if ((*map))
         (*map)->width = total_rows;

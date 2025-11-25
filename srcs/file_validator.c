@@ -6,7 +6,7 @@
 /*   By: iaratang@student.42sp.org.br <iaratang>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 17:34:49 by iaratang          #+#    #+#             */
-/*   Updated: 2025/11/25 20:30:01 by iaratang@st      ###   ########.fr       */
+/*   Updated: 2025/11/25 21:09:41 by iaratang@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void    check_map_format(char *file_name)
             exit(1);
         }
     }
+    close(fd);
 }
 
 void	file_validator(char *file_name)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iaratang@student.42sp.org.br <iaratang>    +#+  +:+       +#+        */
+/*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:17:15 by iaratang          #+#    #+#             */
-/*   Updated: 2025/11/25 21:25:28 by iaratang@st      ###   ########.fr       */
+/*   Updated: 2025/11/26 19:26:29 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,17 @@ typedef struct s_map
 	int			width;
 	int			heigth;
 	int			**map;
-	int			colors;
+	int			**colors;
 }				t_map;
+
 
 //arguments validation
 void	file_validator(char *file_name);
 
-//testes 
+//testes
 void    malloc_map(t_map **map, char *file_name);
 void    populate_matrix(t_map **map, char *file_name);
+void	check_colors(char *file_name, t_map *map);
 
 //frees
 void free_map(t_map **map);
@@ -59,5 +61,6 @@ void free_splited(char **splited);
 
 //utils
 int count_rows(char *line);
+int	ft_atoi_hex(char *str);
 
 #endif

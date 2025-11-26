@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iaratang@student.42sp.org.br <iaratang>    +#+  +:+       +#+        */
+/*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 16:08:57 by iaratang          #+#    #+#             */
-/*   Updated: 2025/11/25 22:03:12 by iaratang@st      ###   ########.fr       */
+/*   Updated: 2025/11/26 19:41:22 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,23 @@ int	main(int argc, char **argv)
 	file_validator(argv[1]);
 	malloc_map(&map, argv[1]);
 	populate_matrix(&map, argv[1]);
+	check_colors(argv[1], map);
 
-	int i = 0;
-	int j;
-	
-	while (i < map->heigth)
-	{
-		j = 0;
-		while (j < map->width)
-		{
-			printf("%i ", map->map[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
+	// int i = 0;
+	// int j;
+
+	// while (i < map->heigth)
+	// {
+	// 	j = 0;
+	// 	while (j < map->width)
+	// 	{
+	// 		printf("%i ", map->colors[i][j]);
+	// 		j++;
+	// 	}
+	// 	printf("\n");
+	// 	i++;
+	// }
+
 
 	free_map(&map);
 }

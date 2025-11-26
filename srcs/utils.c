@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iaratang@student.42sp.org.br <iaratang>    +#+  +:+       +#+        */
+/*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 20:22:03 by iaratang@st       #+#    #+#             */
-/*   Updated: 2025/11/25 20:32:48 by iaratang@st      ###   ########.fr       */
+/*   Updated: 2025/11/26 19:26:12 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,25 @@ int count_rows(char *line)
         i++;
     }
     return (rows);
+}
+
+int	ft_atoi_hex(char *str)
+{
+	int	num;
+	int	i;
+
+	num = 0;
+	i = 0;
+	while (str[i])
+	{
+		num *= 16;
+		if (str[i] >= '0' && str[i] <= '9')
+			num += str[i] - '0';
+		else if (str[i] >= 'A' && str[i] <= 'F')
+			num += str[i] - 'A' + 10;
+		else if (str[i] >= 'a' && str[i] <= 'f')
+			num += str[i] - 'a' + 10;
+		i++;
+	}
+	return (num);
 }

@@ -6,7 +6,7 @@
 #    By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/11 16:23:19 by iaratang          #+#    #+#              #
-#    Updated: 2025/11/26 16:05:57 by iaratang         ###   ########.fr        #
+#    Updated: 2025/12/02 12:40:51 by iaratang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS =	srcs/main.c\
 		srcs/free_allocs.c\
 		srcs/utils.c\
 		srcs/fill_map.c\
-		srcs/colors.c\
+		srcs/isometric_projection.c\
 
 
 OBJS = $(SRCS:.c=.o)

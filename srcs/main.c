@@ -6,7 +6,7 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 16:08:57 by iaratang          #+#    #+#             */
-/*   Updated: 2025/11/26 19:41:22 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/12/02 16:24:37 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,38 @@ int	main(int argc, char **argv)
 	file_validator(argv[1]);
 	malloc_map(&map, argv[1]);
 	populate_matrix(&map, argv[1]);
-	check_colors(argv[1], map);
+	convert_dots(&map);
 
-	// int i = 0;
-	// int j;
+	void	*mlx;
+	void	*mlx_win;
+	t_data	img;
 
-	// while (i < map->heigth)
-	// {
-	// 	j = 0;
-	// 	while (j < map->width)
-	// 	{
-	// 		printf("%i ", map->colors[i][j]);
-	// 		j++;
-	// 	}
-	// 	printf("\n");
-	// 	i++;
-	// }
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, 1920, 1080, "");
+	img.img = mlx_new_image(mlx, 1920, 1080);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_len,
+								&img.endian);
+	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+
+	int i = 0;
+	int j;
+
+	while (i < map->heigth)
+	{
+		j = 0;
+		while (j < map->width)
+		{
+			my_mlx_pixel_put(&img, (map->bd_dots[i][j]->x) + WINDOW_WIDTH/2, (map->bd_dots[i][j]->y) + WINDOW_HEIGHT/2 , map->bd_dots[i][j]->color);
+
+			printf("x: %i, y: %i", map->bd_dots[i][j]->x + WINDOW_WIDTH/2, map->bd_dots[i][j]->y + WINDOW_HEIGHT/2);
+			j++;
+		}
+		printf("\n-------------\n");
+		i++;
+	}
 
 
+	mlx_loop(mlx);
 	free_map(&map);
 }
 

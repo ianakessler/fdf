@@ -6,7 +6,7 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 15:35:37 by iaratang@st       #+#    #+#             */
-/*   Updated: 2025/11/26 17:18:03 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/12/02 12:42:27 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	set_map_height(t_map **map, char *file_name)
 		total_lines++;
 		free(line);
 	}
+	free(line);
 	if ((*map))
 		(*map)->heigth = total_lines;
 	close(fd);
@@ -49,6 +50,7 @@ static void	set_map_width(t_map **map, char *file_name)
 		if (!line)
 			break;
 		trim_line = ft_strtrim(line, " \n\t");
+		free(line);
 		splited_line = ft_split(trim_line, ' ');
 		if (!splited_line || !trim_line)
 			break;
@@ -65,26 +67,24 @@ static void	set_map_width(t_map **map, char *file_name)
 void	malloc_map(t_map **map, char *file_name)
 {
 	int	i;
+	int	j;
 
 	i = 0;
 	set_map_height(map, file_name);
 	set_map_width(map, file_name);
-	(*map)->map = malloc(sizeof(int *) * (*map)->heigth);
-	if (!(*map)->map)
-	{
-		ft_putstr_fd("Error allocting map, exiting...\n", 1);
-		exit(1);
-	}
+	(*map)->dots = malloc(sizeof(*(*map)->dots) * (*map)->heigth);
+	if (!(*map)->dots)
+		return ;
 	while (i < (*map)->heigth)
 	{
-		(*map)->map[i] = malloc(sizeof(int) * (*map)->width);
-		if (!(*map)->map[i])
+		(*map)->dots[i] = malloc(sizeof(*(*map)->dots[i]) * (*map)->width);
+		j = 0;
+		while (j < (*map)->width)
 		{
-			while(--i >= 0)
-				free((*map)->map[i]);
-			free((*map)->map);
-			return ;
+			(*map)->dots[i][j] = malloc(sizeof(t_dot));
+			j++;
 		}
 		i++;
 	}
+	malloc_2d_map(map);
 }

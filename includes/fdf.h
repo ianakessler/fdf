@@ -6,7 +6,7 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:17:15 by iaratang          #+#    #+#             */
-/*   Updated: 2025/11/26 19:26:29 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/12/02 12:41:21 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,27 @@ typedef struct	s_data
 	int			endian;
 }				t_data;
 
+typedef struct	s_dot
+{
+	int			x;
+	int			y;
+	int			z;
+	int			color;
+}				t_dot;
+
+typedef struct s_2D_dot
+{
+	int			x;
+	int			y;
+	int			color;
+}				t_2D_dot;
+
 typedef struct s_map
 {
 	int			width;
 	int			heigth;
-	int			**map;
-	int			**colors;
+	t_dot		***dots;
+	t_2D_dot	***bd_dots;
 }				t_map;
 
 
@@ -53,7 +68,8 @@ void	file_validator(char *file_name);
 //testes
 void    malloc_map(t_map **map, char *file_name);
 void    populate_matrix(t_map **map, char *file_name);
-void	check_colors(char *file_name, t_map *map);
+void	convert_dots(t_map **map);
+void	malloc_2d_map(t_map **map);
 
 //frees
 void free_map(t_map **map);

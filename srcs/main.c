@@ -6,23 +6,11 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 16:08:57 by iaratang          #+#    #+#             */
-/*   Updated: 2025/12/02 16:24:37 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/12/03 18:37:26 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	if (x >= 0 && x < WINDOW_WIDTH && y >= 0 && y < WINDOW_HEIGHT)
-	{
-		dst = data->addr + (y * data->line_len + x * (data->bits_per_pixel / 8));
-		*(unsigned int*)dst = color;
-	}
-}
-
 
 int	main(int argc, char **argv)
 {
@@ -50,22 +38,23 @@ int	main(int argc, char **argv)
 								&img.endian);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 
-	int i = 0;
-	int j;
+	draw_map(&img, map, 0, 0);
 
-	while (i < map->heigth)
-	{
-		j = 0;
-		while (j < map->width)
-		{
-			my_mlx_pixel_put(&img, (map->bd_dots[i][j]->x) + WINDOW_WIDTH/2, (map->bd_dots[i][j]->y) + WINDOW_HEIGHT/2 , map->bd_dots[i][j]->color);
+	// int i = 0;
+	// int j;
 
-			printf("x: %i, y: %i", map->bd_dots[i][j]->x + WINDOW_WIDTH/2, map->bd_dots[i][j]->y + WINDOW_HEIGHT/2);
-			j++;
-		}
-		printf("\n-------------\n");
-		i++;
-	}
+	// while (i < map->heigth)
+	// {
+	// 	j = 0;
+	// 	while (j < map->width)
+	// 	{
+	// 		my_mlx_pixel_put(&img, (map->bd_dots[i][j]->x) + WINDOW_WIDTH/2, (map->bd_dots[i][j]->y) + WINDOW_HEIGHT/2 , map->bd_dots[i][j]->color);
+	// 		printf("x: %i, y: %i", map->bd_dots[i][j]->x + WINDOW_WIDTH/2, map->bd_dots[i][j]->y + WINDOW_HEIGHT/2);
+	// 		j++;
+	// 	}
+	// 	printf("\n-------------\n");
+	// 	i++;
+	// }
 
 
 	mlx_loop(mlx);

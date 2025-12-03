@@ -6,7 +6,7 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:17:15 by iaratang          #+#    #+#             */
-/*   Updated: 2025/12/02 12:41:21 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/12/03 18:51:48 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,12 @@ void	malloc_2d_map(t_map **map);
 void free_map(t_map **map);
 void free_splited(char **splited);
 
+void	bresenham_line_draw(t_data *data,float slope, int x1, int y1, int x2, int y2);
+void	draw_map(t_data *data, t_map *map, int i, int j);
+
 //utils
 int count_rows(char *line);
 int	ft_atoi_hex(char *str);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 #endif

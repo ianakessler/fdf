@@ -6,7 +6,7 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 15:35:37 by iaratang@st       #+#    #+#             */
-/*   Updated: 2025/12/02 12:42:27 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/12/03 19:13:22 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	set_map_height(t_map **map, char *file_name)
 	}
 	free(line);
 	if ((*map))
-		(*map)->heigth = total_lines;
+		(*map)->heigth = total_lines;	
 	close(fd);
 }
 

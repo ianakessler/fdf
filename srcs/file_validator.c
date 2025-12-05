@@ -6,7 +6,7 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 17:34:49 by iaratang          #+#    #+#             */
-/*   Updated: 2025/11/26 15:49:55 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/12/05 18:34:49 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	validate_file_name(char *file_name)
 
 static void	validate_file_descriptor(char *file_name)
 {
-	int fd;
+	int	fd;
 
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
@@ -48,8 +48,11 @@ void	check_map_format(char *file_name)
 	fd = open(file_name, O_RDONLY);
 	rows = 0;
 	compare_rows = 0;
-	while ((line = get_next_line(fd)))
+	while (1)
 	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
 		trim = ft_strtrim(line, " \n\t");
 		free(line);
 		rows = count_rows(trim);
@@ -57,10 +60,7 @@ void	check_map_format(char *file_name)
 		if (compare_rows == 0)
 			compare_rows = rows;
 		if (compare_rows != 0 && (compare_rows != rows))
-		{
-			ft_putstr_fd("Map must be a rectangle, exiting...\n", 1);
-			exit(1);
-		}
+			exit_error("Map must be a rectangle, exiting...\n");
 	}
 	close(fd);
 }

@@ -6,7 +6,7 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:17:15 by iaratang          #+#    #+#             */
-/*   Updated: 2025/12/03 18:51:48 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/12/05 18:33:03 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@
 
 
 //structs
+
+typedef struct	s_vars
+{
+	void		*mlx;
+	void		*mlx_win;
+}				t_vars;
 
 typedef struct	s_data
 {
@@ -70,17 +76,21 @@ void    malloc_map(t_map **map, char *file_name);
 void    populate_matrix(t_map **map, char *file_name);
 void	convert_dots(t_map **map);
 void	malloc_2d_map(t_map **map);
+void	init_mlx(t_vars *mlx_vars, t_data *img);
 
 //frees
 void free_map(t_map **map);
 void free_splited(char **splited);
 
-void	bresenham_line_draw(t_data *data,float slope, int x1, int y1, int x2, int y2);
-void	draw_map(t_data *data, t_map *map, int i, int j);
+void	draw_map(t_data *data, t_map *map);
+
+int	close_window(t_data *data, t_vars *vars);
+int	key_hanler(int keycode, t_data *data, t_vars *vars);
 
 //utils
 int count_rows(char *line);
 int	ft_atoi_hex(char *str);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	exit_error(char *str);
 
 #endif

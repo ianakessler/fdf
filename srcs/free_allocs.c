@@ -6,11 +6,11 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 19:33:47 by iaratang@st       #+#    #+#             */
-/*   Updated: 2025/12/01 16:24:00 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/12/05 18:35:51 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/fdf.h"
+#include "../includes/fdf.h"
 
 void	free_map(t_map **map)
 {
@@ -18,8 +18,7 @@ void	free_map(t_map **map)
 	int	j;
 
 	if (!map || !(*map))
-		return;
-
+		return ;
 	i = 0;
 	while (i < (*map)->heigth)
 	{

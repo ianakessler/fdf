@@ -6,7 +6,7 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 20:06:02 by iaratang@st       #+#    #+#             */
-/*   Updated: 2025/12/02 17:00:42 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/12/05 18:35:13 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	fill_line(t_map **map, char *line, int row)
 	int		current_value;
 	char	**splited;
 	char	*color_string;
-	int 	i;
+	int		i;
 
 	i = 0;
 	splited = ft_split(line, ' ');

@@ -6,35 +6,35 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 20:22:03 by iaratang@st       #+#    #+#             */
-/*   Updated: 2025/11/26 19:26:12 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/12/05 18:32:53 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int count_rows(char *line)
+int	count_rows(char *line)
 {
-    int i;
-    int rows;
-    int state;
+	int	i;
+	int	rows;
+	int	state;
 
-    i = 0;
-    state = 0;
-    rows = 0;
-    while (line[i])
-    {
-        if (!state && line[i] != ' ')
-        {
-            state = 1;
-            rows++;
-        }
-        if (state && line[i] == ' ')
-        {
-            state = 0;
-        }
-        i++;
-    }
-    return (rows);
+	i = 0;
+	state = 0;
+	rows = 0;
+	while (line[i])
+	{
+		if (!state && line[i] != ' ')
+		{
+			state = 1;
+			rows++;
+		}
+		if (state && line[i] == ' ')
+		{
+			state = 0;
+		}
+		i++;
+	}
+	return (rows);
 }
 
 int	ft_atoi_hex(char *str)
@@ -56,4 +56,10 @@ int	ft_atoi_hex(char *str)
 		i++;
 	}
 	return (num);
+}
+
+void	exit_error(char *str)
+{
+	ft_putstr_fd(str, 1);
+	exit(1);
 }

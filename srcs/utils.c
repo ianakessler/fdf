@@ -6,7 +6,7 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 20:22:03 by iaratang@st       #+#    #+#             */
-/*   Updated: 2025/12/05 18:32:53 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/12/10 17:49:24 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,15 @@ void	exit_error(char *str)
 {
 	ft_putstr_fd(str, 1);
 	exit(1);
+}
+
+char	**trim_and_split(char *line)
+{
+	char	*trimmed;
+	char	**splited;
+
+	trimmed = ft_strtrim(line, " \n\t");
+	splited = ft_split(trimmed, ' ');
+	free(trimmed);
+	return (splited);
 }

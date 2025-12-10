@@ -6,7 +6,7 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 18:26:09 by iaratang          #+#    #+#             */
-/*   Updated: 2025/12/05 18:38:18 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/12/10 17:56:24 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ void	convert_dots(t_map **map)
 
 static double	isometric_calc_x(int x, int y)
 {
-	return (((x - y) * cos(0.523599) * 10) + WINDOW_WIDTH / 2);
+	return (((x - y) * cos(0.523599) * 6) + WINDOW_WIDTH / 2);
 }
 
 static double	isometric_calc_y(int x, int y, int z)
 {
-	return ((((x + 2 * y + z) * sin(0.523599)) * 10) + WINDOW_HEIGHT / 2);
+	return ((((x + 2 * y + z) * sin(0.523599)) * -6) + WINDOW_HEIGHT / 2);
 }
 
 void	malloc_2d_map(t_map **map)

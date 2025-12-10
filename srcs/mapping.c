@@ -6,7 +6,7 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 15:35:37 by iaratang@st       #+#    #+#             */
-/*   Updated: 2025/12/05 18:24:54 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/12/10 18:03:31 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	set_map_height(t_map **map, char *file_name)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			break;
+			break ;
 		total_lines++;
 		free(line);
 	}
@@ -36,11 +36,10 @@ static void	set_map_height(t_map **map, char *file_name)
 
 static void	set_map_width(t_map **map, char *file_name)
 {
-	int	total_rows;
-	int	fd;
+	int		total_rows;
+	int		fd;
 	char	*line;
 	char	**splited_line;
-	char	*trim_line;
 
 	fd = open(file_name, O_RDONLY);
 	total_rows = 0;
@@ -48,13 +47,11 @@ static void	set_map_width(t_map **map, char *file_name)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			break;
-		trim_line = ft_strtrim(line, " \n\t");
+			break ;
+		splited_line = trim_and_split(line);
 		free(line);
-		splited_line = ft_split(trim_line, ' ');
-		if (!splited_line || !trim_line)
-			break;
-		free(trim_line);
+		if (!splited_line)
+			break ;
 		while (splited_line[total_rows])
 			total_rows++;
 		free_splited(splited_line);

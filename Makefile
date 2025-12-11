@@ -6,7 +6,7 @@
 #    By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/11 16:23:19 by iaratang          #+#    #+#              #
-#    Updated: 2025/12/05 16:47:42 by iaratang         ###   ########.fr        #
+#    Updated: 2025/12/11 14:10:25 by iaratang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,12 +40,15 @@ INCLUDE = -I$(INCLUDES_PATH)
 
 all:	$(NAME)
 
-$(NAME):	$(OBJS) $(LIBFT_A)
+$(NAME):	$(OBJS) $(LIBFT_A) $(MINILIBX)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_A) $(MINILIBX) -lm -lX11 -lXext -o $@
 	@echo "FDF Compilado com sucesso"
 
 $(LIBFT_A):
 	@$(MAKE) -C $(LIBFT_PATH)
+
+$(MINILIBX):
+	@$(MAKE) -C $(MINILIBX_PATH)
 
 %.o: %.c
 	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
@@ -53,6 +56,7 @@ $(LIBFT_A):
 
 clean:
 	@$(MAKE) -C $(LIBFT_PATH) clean
+	@$(MAKE) -C $(MINILIBX_PATH) clean
 	@$(RM) $(OBJS)
 
 fclean: clean

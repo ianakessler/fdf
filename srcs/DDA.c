@@ -6,15 +6,14 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 18:20:32 by iaratang          #+#    #+#             */
-/*   Updated: 2025/12/10 18:14:34 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/12/10 18:28:24 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	draw_line(t_env *env, t_2D_dot *p1, t_2D_dot *p2, int color);
 
-void	my_mlx_pixel_put(t_env *env, int x, int y, int color)
+static void	my_mlx_pixel_put(t_env *env, int x, int y, int color)
 {
 	char	*dst;
 
@@ -23,6 +22,29 @@ void	my_mlx_pixel_put(t_env *env, int x, int y, int color)
 		dst = env->addr + (y * env->line_len + x
 				*(env->bits_per_pixel / 8));
 		*(unsigned int *) dst = color;
+	}
+}
+
+static void	draw_line(t_env	*env, t_2D_dot *p1, t_2D_dot *p2, int color)
+{
+	int		i;
+	int		step;
+	float	x;
+	float	y;
+
+	if (abs(p2->x - p1->x) >= abs(p2->y - p1->y))
+		step = abs(p2->x - p1->x);
+	else
+		step = abs(p2->y - p1->y);
+	x = p1->x;
+	y = p1->y;
+	i = 0;
+	while (i <= step)
+	{
+		my_mlx_pixel_put(env, x, y, color);
+		x += (p2->x - p1->x) / (float)step;
+		y += (p2->y - p1->y) / (float)step;
+		i++;
 	}
 }
 
@@ -45,29 +67,6 @@ void	draw_map(t_env *env, t_map *map)
 					map->bd_dots[i + 1][j], map->bd_dots[i][j]->color);
 			j++;
 		}
-		i++;
-	}
-}
-
-void	draw_line(t_env	*env, t_2D_dot *p1, t_2D_dot *p2, int color)
-{
-	int		i;
-	int		step;
-	float	x;
-	float	y;
-
-	if (abs(p2->x - p1->x) >= abs(p2->y - p1->y))
-		step = abs(p2->x - p1->x);
-	else
-		step = abs(p2->y - p1->y);
-	x = p1->x;
-	y = p1->y;
-	i = 0;
-	while (i <= step)
-	{
-		my_mlx_pixel_put(env, x, y, color);
-		x += (p2->x - p1->x) / (float)step;
-		y += (p2->y - p1->y) / (float)step;
 		i++;
 	}
 }

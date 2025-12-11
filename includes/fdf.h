@@ -6,7 +6,7 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:17:15 by iaratang          #+#    #+#             */
-/*   Updated: 2025/12/10 18:15:10 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/12/11 17:23:12 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_map
 	int			heigth;
 	t_dot		***dots;
 	t_2D_dot	***bd_dots;
+	float		scale;
 }				t_map;
 
 typedef struct s_env
@@ -74,6 +75,7 @@ void	init_mlx(t_env *env);
 //frees
 void	free_map(t_map **map);
 void	free_splited(char **splited);
+void	free_3D_map(t_map **map);
 
 void	draw_map(t_env *env, t_map *map);
 
@@ -83,8 +85,9 @@ int		key_handler(int keycode, t_env *env);
 //utils
 int		count_rows(char *line);
 int		ft_atoi_hex(char *str);
-void	my_mlx_pixel_put(t_env *env, int x, int y, int color);
 void	exit_error(char *str);
 char	**trim_and_split(char *line);
+
+void	set_map_scale(t_map **map);
 
 #endif

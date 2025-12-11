@@ -6,7 +6,7 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 17:34:49 by iaratang          #+#    #+#             */
-/*   Updated: 2025/12/10 17:51:47 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/12/11 17:33:21 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	validate_file_descriptor(char *file_name)
 	close(fd);
 }
 
-void	check_map_format(char *file_name)
+static void	check_map_format(char *file_name)
 {
 	int		fd;
 	char	*line;

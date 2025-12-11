@@ -6,13 +6,19 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 20:06:02 by iaratang@st       #+#    #+#             */
-/*   Updated: 2025/12/05 18:35:13 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/12/11 14:20:15 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-static char	*get_color(char **splited, int i);
+static char	*get_color(char **splited, int i)
+{
+	char	*color;
+
+	color = ft_strrchr(splited[i], ',');
+	return (color);
+}
 
 static void	fill_line(t_map **map, char *line, int row)
 {
@@ -59,10 +65,3 @@ void	populate_matrix(t_map **map, char *file_name)
 	close(fd);
 }
 
-static char	*get_color(char **splited, int i)
-{
-	char	*color;
-
-	color = ft_strrchr(splited[i], ',');
-	return (color);
-}

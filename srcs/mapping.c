@@ -6,7 +6,7 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 15:35:37 by iaratang@st       #+#    #+#             */
-/*   Updated: 2025/12/10 18:03:31 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/12/10 18:44:16 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	malloc_map(t_map **map, char *file_name)
 	i = 0;
 	set_map_height(map, file_name);
 	set_map_width(map, file_name);
+	set_map_scale(map);
 	(*map)->dots = malloc(sizeof(*(*map)->dots) * (*map)->heigth);
 	if (!(*map)->dots)
 		return ;

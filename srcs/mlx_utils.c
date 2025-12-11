@@ -6,7 +6,7 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 16:39:58 by iaratang          #+#    #+#             */
-/*   Updated: 2025/12/10 18:02:52 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/12/11 14:42:13 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	init_mlx(t_env *env)
 
 int	close_window(t_env *env)
 {
+	ft_putstr_fd("Exiting...\n", 1);
 	mlx_destroy_image(env->mlx, env->img);
 	mlx_destroy_window(env->mlx, env->mlx_win);
 	mlx_destroy_display(env->mlx);

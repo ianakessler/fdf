@@ -6,7 +6,7 @@
 /*   By: iaratang <iaratang@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 18:26:09 by iaratang          #+#    #+#             */
-/*   Updated: 2025/12/10 17:56:24 by iaratang         ###   ########.fr       */
+/*   Updated: 2025/12/11 17:24:26 by iaratang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 #include "../includes/fdf.h"
 
-static double	isometric_calc_y(int x, int y, int z);
-static double	isometric_calc_x(int x, int y);
+static double	isometric_calc_y(int x, int y, int z, t_map *map);
+static double	isometric_calc_x(int x, int y, t_map *map);
 
 void	convert_dots(t_map **map)
 {
@@ -30,24 +30,25 @@ void	convert_dots(t_map **map)
 		while (j < (*map)->width)
 		{
 			(*map)->bd_dots[i][j]->x = isometric_calc_x((*map)->dots[i][j]->x,
-					(*map)->dots[i][j]->y);
+					(*map)->dots[i][j]->y, *map);
 			(*map)->bd_dots[i][j]->y = isometric_calc_y((*map)->dots[i][j]->x,
-					(*map)->dots[i][j]->y, (*map)->dots[i][j]->z);
+					(*map)->dots[i][j]->y, (*map)->dots[i][j]->z, *map);
 			(*map)->bd_dots[i][j]->color = (*map)->dots[i][j]->color;
 			j++;
 		}
 		i++;
 	}
+	free_3D_map(map);
 }
 
-static double	isometric_calc_x(int x, int y)
+static double	isometric_calc_x(int x, int y, t_map *map)
 {
-	return (((x - y) * cos(0.523599) * 6) + WINDOW_WIDTH / 2);
+	return ((-(x - y) * cos(0.523599) * -map->scale) + WINDOW_WIDTH / 2);
 }
 
-static double	isometric_calc_y(int x, int y, int z)
+static double	isometric_calc_y(int x, int y, int z, t_map *map)
 {
-	return ((((x + 2 * y + z) * sin(0.523599)) * -6) + WINDOW_HEIGHT / 2);
+	return (((-(x + 2 * y - (0.5 * z)) * sin(0.523599)) * map->scale) + WINDOW_HEIGHT / 6);
 }
 
 void	malloc_2d_map(t_map **map)
@@ -73,4 +74,26 @@ void	malloc_2d_map(t_map **map)
 		}
 		i++;
 	}
+}
+
+void	set_map_scale(t_map **map)
+{
+	int	h;
+	int	w;
+	int	total_size;
+
+	h = (*map)->heigth;
+	w = (*map)->width;
+	total_size = h * w;
+	if (total_size > 100000)
+		(*map)->scale = -1;
+	else if (total_size <= 100000 && total_size > 10000)
+		(*map)->scale = -3;
+	else if (total_size <= 10000 && total_size > 5000)
+		(*map)->scale = -5;
+	else if (total_size <= 5000 && total_size > 1000)
+		(*map)->scale = -10;
+	else if (total_size < 1000)
+		(*map)->scale = -15;
+
 }
